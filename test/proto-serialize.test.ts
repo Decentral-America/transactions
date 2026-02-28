@@ -17,7 +17,7 @@ import { txs } from './example-proto-tx'
 import { massTransfer } from '../src/transactions/mass-transfer'
 import { updateAssetInfo } from '../src/transactions/update-asset-info'
 import {randomHexString, TIMEOUT} from './integration/config'
-import {address} from '@waves/ts-lib-crypto'
+import {address} from '@decentralchain/ts-lib-crypto'
 import {issueMinimalParams} from './minimalParams'
 import {deleteProofsAndId} from "./utils";
 

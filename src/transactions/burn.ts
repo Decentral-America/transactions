@@ -3,13 +3,13 @@
  */
 import {IBurnParams, WithId, WithProofs, WithSender} from '../transactions'
 import { binary } from '@decentralchain/marshall'
-import { signBytes, blake2b, base58Encode } from '@waves/ts-lib-crypto'
+import { signBytes, blake2b, base58Encode } from '@decentralchain/ts-lib-crypto'
 import {addProof, getSenderPublicKey, convertToPairs, networkByte, fee, normalizeAssetId} from '../generic'
 import { TSeedTypes } from '../types'
 import { validate } from '../validators'
 import { txToProtoBytes } from '../proto-serialize'
 import { DEFAULT_VERSIONS } from '../defaultVersions'
-import {BurnTransaction, TRANSACTION_TYPE} from '@waves/ts-types'
+import {BurnTransaction, TRANSACTION_TYPE} from '@decentralchain/ts-types'
 
 
 /* @echo DOCS */
@@ -27,7 +27,7 @@ export function burn(paramsOrTx: any, seed?: TSeedTypes): BurnTransaction & With
     senderPublicKey,
     assetId: paramsOrTx.assetId,
     amount: paramsOrTx.amount,
-    chainId: networkByte(paramsOrTx.chainId, 87),
+    chainId: networkByte(paramsOrTx.chainId, 76),
     fee: fee(paramsOrTx, 100000),
     timestamp: paramsOrTx.timestamp || Date.now(),
     proofs: paramsOrTx.proofs || [],

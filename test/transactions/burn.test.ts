@@ -1,4 +1,4 @@
-import {base64Decode, base64Encode, publicKey} from '@waves/ts-lib-crypto'
+import {base64Decode, base64Encode, publicKey} from '@decentralchain/ts-lib-crypto'
 import {burn} from '../../src'
 import {burnMinimalParams} from '../minimalParams'
 import {
@@ -9,7 +9,7 @@ import {
 } from '../../test/utils'
 import {burnTx} from "./expected/proto/burn.tx"
 import {burnBinaryTx} from "./expected/binary/burn.tx"
-import {binary} from '@waves/marshall'
+import {binary} from '@decentralchain/marshall'
 
 
 describe('burn', () => {
@@ -18,7 +18,7 @@ describe('burn', () => {
 
     it('should build from minimal set of params', () => {
         const tx = burn({...burnMinimalParams} as any, stringSeed)
-        expect(tx).toMatchObject({...burnMinimalParams, fee: 100000, chainId: 87, version: 3})
+        expect(tx).toMatchObject({...burnMinimalParams, fee: 100000, chainId: 76, version: 3})
     })
 
     it('Should get correct signature', () => {

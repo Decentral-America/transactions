@@ -2,14 +2,14 @@
  * @module index
  */
 import {ILeaseParams, WithId, WithProofs, WithSender} from '../transactions'
-import { signBytes, blake2b, base58Encode } from '@waves/ts-lib-crypto'
+import { signBytes, blake2b, base58Encode } from '@decentralchain/ts-lib-crypto'
 import {addProof, convertToPairs, fee, getSenderPublicKey, networkByte} from '../generic'
 import { TSeedTypes } from '../types'
 import { binary } from '@decentralchain/marshall'
 import { validate } from '../validators'
 import { txToProtoBytes } from '../proto-serialize'
 import { DEFAULT_VERSIONS } from '../defaultVersions'
-import {LeaseTransaction, TRANSACTION_TYPE} from '@waves/ts-types'
+import {LeaseTransaction, TRANSACTION_TYPE} from '@decentralchain/ts-types'
 
 
 /* @echo DOCS */
@@ -30,7 +30,7 @@ export function lease(paramsOrTx: any, seed?: TSeedTypes): LeaseTransaction & Wi
     fee: fee(paramsOrTx, 100000),
     timestamp: paramsOrTx.timestamp || Date.now(),
     proofs: paramsOrTx.proofs || [],
-    chainId: networkByte(paramsOrTx.chainId, 87),
+    chainId: networkByte(paramsOrTx.chainId, 76),
     id: '',
   }
 

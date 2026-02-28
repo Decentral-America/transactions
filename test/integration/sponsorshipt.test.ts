@@ -1,6 +1,6 @@
 import { broadcast, issue, sponsorship, transfer, waitForTx} from '../../src'
 import {API_BASE, CHAIN_ID, MASTER_SEED, TIMEOUT} from './config'
-import {address} from '@waves/ts-lib-crypto'
+import {address} from '@decentralchain/ts-lib-crypto'
 import {validate} from '../../src/validators'
 
 describe('Sponsorship', () => {

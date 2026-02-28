@@ -1,4 +1,4 @@
-import {TRANSACTION_TYPE} from '@waves/ts-types'
+import {TRANSACTION_TYPE} from '@decentralchain/ts-types'
 import {
   defaultValue,
   getError,
@@ -14,7 +14,7 @@ import {
   isRequired,
   isString,
   isValidDataPair,
-  isWavesOrAssetId,
+  isDccOrAssetId,
   orEq,
   pipe,
   prop,
@@ -49,12 +49,12 @@ const invokeScheme = {
       (data: Array<unknown>) => data.every(
           validatePipe(
               pipe(prop('amount'), isNumberLike),
-              pipe(prop('assetId'), isWavesOrAssetId)
+              pipe(prop('assetId'), isDccOrAssetId)
           )
       )
   ),
   fee: isNaturalNumberOrZeroLike,
-  feeAssetId: isWavesOrAssetId,
+  feeAssetId: isDccOrAssetId,
   chainId: isNaturalNumberLike,
   timestamp: isNaturalNumberLike,
   proofs: ifElse(isArray, defaultValue(true), orEq([ undefined ])),

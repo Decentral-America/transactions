@@ -7,9 +7,9 @@ import {
     Transaction,
     TRANSACTION_TYPE,
     TransactionType
-} from '@waves/ts-types/src'
-import {InvokeScriptCallArgument} from '@waves/ts-types/src/parts'
-import {EthereumTransaction} from '@waves/ts-types'
+} from '@decentralchain/ts-types/src'
+import {InvokeScriptCallArgument} from '@decentralchain/ts-types/src/parts'
+import {EthereumTransaction} from '@decentralchain/ts-types'
 
 export interface WithId {
     /**
@@ -108,7 +108,7 @@ export interface IBasicParams<LONG = string | number> {
     /**
      * Network byte. Could be set as number or as char.
      * If set as char(string), charCodeAt(0) will be used. E.g.,
-     * 'W' will be converted to '87'
+     * 'L' will be converted to '76'
      * If not set, 87 will be used as default
      */
     chainId?: string | number
@@ -207,12 +207,12 @@ export interface ICancelOrderParams {
     senderPublicKey?: string
 }
 
-export interface IWavesAuthParams {
+export interface IDccAuthParams {
     timestamp?: number
     publicKey?: string
 }
 
-export interface IWavesAuth {
+export interface IDccAuth {
     timestamp: number
     address: string
     publicKey: string

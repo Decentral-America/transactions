@@ -2,14 +2,14 @@
  * @module index
  */
 import {IReissueParams, WithId, WithProofs, WithSender} from '../transactions'
-import { signBytes, blake2b, base58Encode } from '@waves/ts-lib-crypto'
+import { signBytes, blake2b, base58Encode } from '@decentralchain/ts-lib-crypto'
 import {addProof, convertToPairs, fee, getSenderPublicKey, networkByte} from '../generic'
 import { TSeedTypes } from '../types'
 import { binary } from '@decentralchain/marshall'
 import { validate } from '../validators'
 import { txToProtoBytes } from '../proto-serialize'
 import { DEFAULT_VERSIONS } from '../defaultVersions'
-import {ReissueTransaction, TRANSACTION_TYPE} from '@waves/ts-types'
+import {ReissueTransaction, TRANSACTION_TYPE} from '@decentralchain/ts-types'
 
 
 /* @echo DOCS */
@@ -28,7 +28,7 @@ export function reissue(paramsOrTx: any, seed?: TSeedTypes): ReissueTransaction 
     assetId: paramsOrTx.assetId,
     quantity: paramsOrTx.quantity,
     reissuable: paramsOrTx.reissuable,
-    chainId: networkByte(paramsOrTx.chainId, 87),
+    chainId: networkByte(paramsOrTx.chainId, 76),
     fee: fee(paramsOrTx,100000),
     timestamp: paramsOrTx.timestamp || Date.now(),
     proofs: paramsOrTx.proofs || [],
