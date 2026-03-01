@@ -3,7 +3,7 @@ export * from './validators'
 import { transferValidator as transfer } from './transfer'
 import { massTransferValidator as massTransfer } from './mass-transfer'
 import { aliasValidator as alias } from './alias'
-import { burnValidator as burn} from './burn'
+import { burnValidator as burn } from './burn'
 import { cancelLeaseValidator as cancelLease } from './cancel-lease'
 import { dataFieldValidator, dataValidator as data } from './data'
 import { sponsorshipValidator as sponsorship } from './sponsorship'
@@ -23,28 +23,27 @@ import { customDataValidator as customData } from './custom-data'
 import { authValidator as auth } from './auth'
 import { authValidator as dccAuth } from './dccAuth'
 
-
 export const validate = {
-    transfer,
-    massTransfer,
-    alias,
-    issue,
-    reissue,
-    sponsorship,
-    burn,
-    setAssetScript,
-    cancelLease,
-    data,
-    dataFieldValidator,
-    lease,
-    setScript,
-    invokeScript,
-    exchange,
-    updateAssetInfo,
-    // invokeExpression,
-    cancelOrder,
-    customData,
-    order,
-    dccAuth,
-    auth,
+  transfer,
+  massTransfer,
+  alias,
+  issue,
+  reissue,
+  sponsorship,
+  burn,
+  setAssetScript,
+  cancelLease,
+  data,
+  dataFieldValidator,
+  lease,
+  setScript,
+  invokeScript,
+  exchange,
+  updateAssetInfo,
+  // invokeExpression,
+  cancelOrder,
+  customData,
+  order,
+  dccAuth,
+  auth,
 }

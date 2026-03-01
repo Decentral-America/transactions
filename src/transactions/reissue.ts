@@ -1,21 +1,29 @@
 /**
  * @module index
  */
-import {IReissueParams, WithId, WithProofs, WithSender} from '../transactions'
+import { IReissueParams, WithId, WithProofs, WithSender } from '../transactions'
 import { signBytes, blake2b, base58Encode } from '@decentralchain/ts-lib-crypto'
-import {addProof, convertToPairs, fee, getSenderPublicKey, networkByte} from '../generic'
+import { addProof, convertToPairs, fee, getSenderPublicKey, networkByte } from '../generic'
 import { TSeedTypes } from '../types'
 import { binary } from '@decentralchain/marshall'
 import { validate } from '../validators'
 import { txToProtoBytes } from '../proto-serialize'
 import { DEFAULT_VERSIONS } from '../defaultVersions'
-import {ReissueTransaction, TRANSACTION_TYPE} from '@decentralchain/ts-types'
-
+import { ReissueTransaction, TRANSACTION_TYPE } from '@decentralchain/ts-types'
 
 /* @echo DOCS */
-export function reissue(paramsOrTx: IReissueParams, seed: TSeedTypes): ReissueTransaction & WithId & WithProofs
-export function reissue(paramsOrTx: IReissueParams & WithSender | ReissueTransaction, seed?: TSeedTypes): ReissueTransaction & WithId & WithProofs
-export function reissue(paramsOrTx: any, seed?: TSeedTypes): ReissueTransaction & WithId & WithProofs{
+export function reissue(
+  paramsOrTx: IReissueParams,
+  seed: TSeedTypes,
+): ReissueTransaction & WithId & WithProofs
+export function reissue(
+  paramsOrTx: (IReissueParams & WithSender) | ReissueTransaction,
+  seed?: TSeedTypes,
+): ReissueTransaction & WithId & WithProofs
+export function reissue(
+  paramsOrTx: any,
+  seed?: TSeedTypes,
+): ReissueTransaction & WithId & WithProofs {
   const type = TRANSACTION_TYPE.REISSUE
   const version = paramsOrTx.version || DEFAULT_VERSIONS.REISSUE
   const seedsAndIndexes = convertToPairs(seed)
@@ -29,7 +37,7 @@ export function reissue(paramsOrTx: any, seed?: TSeedTypes): ReissueTransaction 
     quantity: paramsOrTx.quantity,
     reissuable: paramsOrTx.reissuable,
     chainId: networkByte(paramsOrTx.chainId, 76),
-    fee: fee(paramsOrTx,100000),
+    fee: fee(paramsOrTx, 100000),
     timestamp: paramsOrTx.timestamp || Date.now(),
     proofs: paramsOrTx.proofs || [],
     id: '',
@@ -39,7 +47,7 @@ export function reissue(paramsOrTx: any, seed?: TSeedTypes): ReissueTransaction 
 
   const bytes = version > 2 ? txToProtoBytes(tx) : binary.serializeTx(tx)
 
-  seedsAndIndexes.forEach(([s,i]) => addProof(tx, signBytes(s, bytes),i))
+  seedsAndIndexes.forEach(([s, i]) => addProof(tx, signBytes(s, bytes), i))
   tx.id = base58Encode(blake2b(bytes))
 
   return tx

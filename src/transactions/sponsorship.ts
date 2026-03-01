@@ -1,21 +1,29 @@
 /**
  * @module index
  */
-import {ISponsorshipParams, WithId, WithProofs, WithSender} from '../transactions'
+import { ISponsorshipParams, WithId, WithProofs, WithSender } from '../transactions'
 import { signBytes, blake2b, base58Encode } from '@decentralchain/ts-lib-crypto'
-import {addProof, getSenderPublicKey, convertToPairs, fee, networkByte} from '../generic'
+import { addProof, getSenderPublicKey, convertToPairs, fee, networkByte } from '../generic'
 import { TSeedTypes } from '../types'
 import { binary } from '@decentralchain/marshall'
 import { validate } from '../validators'
 import { txToProtoBytes } from '../proto-serialize'
 import { DEFAULT_VERSIONS } from '../defaultVersions'
-import {SponsorshipTransaction, TRANSACTION_TYPE} from '@decentralchain/ts-types'
-
+import { SponsorshipTransaction, TRANSACTION_TYPE } from '@decentralchain/ts-types'
 
 /* @echo DOCS */
-export function sponsorship(params: ISponsorshipParams, seed: TSeedTypes): SponsorshipTransaction & WithId & WithProofs
-export function sponsorship(paramsOrTx: ISponsorshipParams & WithSender | SponsorshipTransaction, seed?: TSeedTypes): SponsorshipTransaction & WithId & WithProofs
-export function sponsorship(paramsOrTx: any, seed?: TSeedTypes): SponsorshipTransaction & WithId & WithProofs{
+export function sponsorship(
+  params: ISponsorshipParams,
+  seed: TSeedTypes,
+): SponsorshipTransaction & WithId & WithProofs
+export function sponsorship(
+  paramsOrTx: (ISponsorshipParams & WithSender) | SponsorshipTransaction,
+  seed?: TSeedTypes,
+): SponsorshipTransaction & WithId & WithProofs
+export function sponsorship(
+  paramsOrTx: any,
+  seed?: TSeedTypes,
+): SponsorshipTransaction & WithId & WithProofs {
   const type = TRANSACTION_TYPE.SPONSORSHIP
   const version = paramsOrTx.version || DEFAULT_VERSIONS.SPONSORSHIP
   const seedsAndIndexes = convertToPairs(seed)
