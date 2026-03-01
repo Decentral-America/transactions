@@ -1,8 +1,6 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { serializeCustomData } from './requests/custom-data';
-
 export { massTransfer } from './transactions/mass-transfer';
 export { reissue } from './transactions/reissue';
 export { burn } from './transactions/burn';
@@ -35,7 +33,6 @@ export {
 } from './general';
 export { waitForTx, broadcast } from './nodeInteraction';
 export { makeTx, makeTxBytes } from './make-tx';
-// export { invokeExpression } from './transactions/invoke-expression'
 
 // Export interfaces
 export type {
@@ -71,12 +68,10 @@ export type { TSeedTypes, TOption } from './types';
 // internal libraries access
 import * as crypto from '@decentralchain/ts-lib-crypto';
 import * as marshall from '@decentralchain/marshall';
-// import * as nodeApiJs from '@decentralchain/node-api-js'
 
 const libs = {
   crypto,
   marshall,
-  // nodeApiJs
 };
 
 import * as seedUtils from './seedUtils';

@@ -63,7 +63,7 @@ describe('Node interaction utility functions', () => {
   it('Should get balanceDetails', async () => {
     await expect(
       utilityF.balanceDetails('3MtXzccPrCAoKans9TD9sp3qoFHiajPA4Uu', apiBase),
-    ).resolves.not.toBeFalsy();
+    ).resolves.not.toBe(false);
   }, 5000);
 
   it('Should get asset balance', async () => {
@@ -73,7 +73,7 @@ describe('Node interaction utility functions', () => {
         '3MtXzccPrCAoKans9TD9sp3qoFHiajPA4Uu',
         apiBase,
       ),
-    ).resolves.not.toBeFalsy();
+    ).resolves.not.toBe(false);
   }, 5000);
 
   it('Should get NFT balance', async () => {
@@ -93,7 +93,7 @@ describe('Node interaction utility functions', () => {
 
   it('Should get accountData ', async () => {
     const addr = address(randomSeed(), chainId);
-    await expect(utilityF.accountData(addr, apiBase)).resolves.not.toBeFalsy();
+    await expect(utilityF.accountData(addr, apiBase)).resolves.not.toBe(false);
   }, 5000);
 
   it('Should get accountData and filter it by regexp', async () => {
@@ -113,7 +113,7 @@ describe('Node interaction utility functions', () => {
       '3MtXzccPrCAoKans9TD9sp3qoFHiajPA4Uu',
       apiBase,
     );
-    expect(data).not.toBeFalsy();
+    expect(data).not.toBe(false);
   }, 5000);
 
   it('Should get accountData by key and return null on no data', async () => {

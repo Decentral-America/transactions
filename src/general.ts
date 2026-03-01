@@ -28,7 +28,6 @@ import {
   DataTransaction,
   ExchangeTransaction,
   ExchangeTransactionOrder,
-  // InvokeExpressionTransaction,
   InvokeScriptTransaction,
   IssueTransaction,
   LeaseTransaction,
@@ -54,11 +53,10 @@ import {
   WithTxType,
 } from './transactions';
 import { updateAssetInfo } from './transactions/update-asset-info';
-// import {invokeExpression} from './transactions/invoke-expression'
 
 type TLong = string | number;
 
-export const txTypeMap: {
+const txTypeMap: {
   [type: number]: {
     sign: (
       tx: Transaction<TLong> | (TTxParams & WithTxType),
@@ -97,7 +95,6 @@ export const txTypeMap: {
   [TRANSACTION_TYPE.UPDATE_ASSET_INFO]: {
     sign: (x, seed) => updateAssetInfo(x as UpdateAssetInfoTransaction, seed),
   },
-  // [TRANSACTION_TYPE.INVOKE_EXPRESSION]: {sign: (x, seed) => invokeExpression(x as InvokeExpressionTransaction, seed)},
 };
 
 /**
@@ -109,9 +106,10 @@ export function signTx(
   tx: Transaction | (TTxParams & WithTxType),
   seed: TSeedTypes,
 ): SignedTransaction<Transaction> {
-  if (!txTypeMap[tx.type]) throw new Error(`Unknown tx type: ${tx.type}`);
+  const entry = txTypeMap[tx.type];
+  if (!entry) throw new Error(`Unknown tx type: ${tx.type}`);
 
-  return txTypeMap[tx.type].sign(tx, seed);
+  return entry.sign(tx, seed);
 }
 
 /**
