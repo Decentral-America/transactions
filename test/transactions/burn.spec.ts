@@ -1,4 +1,4 @@
-import { base64Decode, base64Encode, publicKey } from '@decentralchain/ts-lib-crypto';
+import { publicKey } from '@decentralchain/ts-lib-crypto';
 import { burn } from '../../src';
 import { burnMinimalParams } from '../minimalParams';
 import {
@@ -9,7 +9,6 @@ import {
 } from '../../test/utils';
 import { burnTx } from './expected/proto/burn.tx';
 import { burnBinaryTx } from './expected/binary/burn.tx';
-import { binary } from '@decentralchain/marshall';
 
 describe('burn', () => {
   const stringSeed = 'df3dd6d884714288a39af0bd973a1771c9f00f168cf040d6abb6a50dd5e055d8';

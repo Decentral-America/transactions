@@ -1,10 +1,4 @@
-import {
-  base16Decode,
-  base16Encode,
-  base64Decode,
-  base64Encode,
-  publicKey,
-} from '@decentralchain/ts-lib-crypto';
+import { publicKey } from '@decentralchain/ts-lib-crypto';
 import { alias } from '../../src';
 import { aliasMinimalParams } from '../minimalParams';
 import {
@@ -15,7 +9,6 @@ import {
 } from '../utils';
 import { aliasTx } from './expected/proto/alias.tx';
 import { aliasBinaryTx } from './expected/binary/alias.tx';
-import { binary } from '@decentralchain/marshall';
 
 describe('alias', () => {
   const stringSeed = 'adsa';

@@ -1,8 +1,7 @@
-import { protoBytesToTx, txToProtoBytes } from '../../src/proto-serialize';
 import { publicKey } from '@decentralchain/ts-lib-crypto';
 import { invokeScriptMinimalParams } from '../minimalParams';
-import { invokeScript, setScript, waitForTx } from '../../src';
-import { IInvokeScriptParams } from '../../src';
+import { invokeScript } from '../../src';
+import type { IInvokeScriptParams } from '../../src';
 import {
   checkBinarySerializeDeserialize,
   checkProtoSerializeDeserialize,
@@ -11,8 +10,6 @@ import {
 } from '../utils';
 import { invokeScriptTx } from './expected/proto/invoke-script.tx';
 import { invokeScriptBinaryTx } from './expected/binary/invoke-script.tx';
-import { API_BASE, TIMEOUT } from '../integration/config';
-import { broadcast } from '../../src';
 
 describe('invokeScript', () => {
   const stringSeed = 'df3dd6d884714288a39af0bd973a1771c9f00f168cf040d6abb6a50dd5e055d8';
