@@ -47,7 +47,7 @@ const invokeScheme = {
       ),
     ),
   ),
-  fee: isNaturalNumberOrZeroLike,
+  fee: isNaturalNumberLike,
   feeAssetId: isDccOrAssetId,
   chainId: isNaturalNumberLike,
   timestamp: isNaturalNumberLike,
