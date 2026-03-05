@@ -45,7 +45,7 @@ describe('burn', () => {
         },
         stringSeed,
       ),
-    ).toThrowError('tx "amount", has wrong data: 0. Check tx data.');
+    ).toThrowError('tx "amount" has invalid data. Check tx data.');
   });
 
   it('Should create with custom amount', () => {

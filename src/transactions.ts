@@ -7,8 +7,8 @@ import {
   Transaction,
   TRANSACTION_TYPE,
   TransactionType,
-} from '@decentralchain/ts-types/src';
-import { InvokeScriptCallArgument } from '@decentralchain/ts-types/src/parts';
+  InvokeScriptCallArgument,
+} from '@decentralchain/ts-types';
 import { EthereumTransaction } from '@decentralchain/ts-types';
 
 export interface WithId {

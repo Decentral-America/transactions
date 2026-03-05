@@ -59,6 +59,8 @@ export type {
   WithSender,
   WithProofs,
   WithTxType,
+  TTransaction,
+  TTransactionType,
 } from './transactions';
 
 export type { INodeRequestOptions, IStateChangeResponse } from './nodeInteraction';
